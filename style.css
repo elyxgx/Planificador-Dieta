@@ -1,0 +1,387 @@
+/* ======================================================= */
+/* 1. CARGA DE FUENTES LOCALES (@font-face) */
+/* ======================================================= */
+
+/* Fuente para Títulos y Subtítulos */
+@font-face {
+    font-family: 'Skyhigh';
+    src: url('fonts/Skyhigh.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fuente para Texto Normal */
+@font-face {
+    font-family: 'Orion Sans';
+    /* Nota: Usamos un nombre más simple que el nombre del archivo para la familia */
+    src: url('fonts/212 Orion Sans PERSONAL USE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ======================================================= */
+/* 2. ESTILOS GLOBALES Y APLICACIÓN DE FUENTES */
+/* ======================================================= */
+
+body {
+    /* Aplicar la fuente para texto normal */
+    font-family: 'Orion Sans', Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1, 
+section h2 {
+    /* Aplicar la fuente para títulos */
+    font-family: 'Skyhigh', cursive;
+}
+
+header {
+    background-color: #fce4ec; /* Rosa claro para un toque de dieta */
+    color: #333;
+    width: 100%;
+    text-align: center;
+    padding: 1.5em 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px 0;
+    display: flex;
+    gap: 20px;
+}
+
+/* Contenedor del formulario a la izquierda */
+#input-section {
+    flex: 1; /* Ocupa 1 parte */
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #ff80ab; /* Línea de color */
+}
+
+/* Contenedor del menú a la derecha */
+#menu-section {
+    flex: 2; /* Ocupa 2 partes (más grande) */
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #80deea;
+}
+
+/* Estilos para el formulario */
+#meal-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+#meal-form select,
+#meal-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+.catalogo-container {
+    padding: 15px;
+    background-color: #f0f4f7;
+    border-radius: 8px;
+    min-height: 150px;
+    margin-bottom: 20px;
+}
+
+.catalogo-group h4 {
+    font-family: 'Skyhigh', cursive;
+    margin-top: 10px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+    color: #ff80ab;
+}
+
+.checkbox-item {
+    margin-top: 5px;
+    font-size: 0.95em;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+.disabled-item label {
+    color: #999;
+    text-decoration: line-through;
+}
+
+button {
+    background-color: #ff80ab; /* Rosa */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e57399;
+}
+
+button#clear-menu-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+button#clear-menu-btn:hover {
+    background-color: #bdbdbd;
+}
+
+/* Estilos para la tabla del menú */
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.menu-table th, .menu-table td {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.menu-table th {
+    background-color: #e0f7fa;
+    font-family: 'Skyhigh', cursive;
+}
+
+.delete-item {
+    cursor: pointer;
+    color: #ff5252;
+    font-weight: bold;
+    margin-left: 8px;
+    font-size: 0.9em;
+}
+
+.warning-message {
+    color: #ff9800; 
+    font-weight: bold;
+    background-color: #fff3e0;
+    padding: 10px;
+    border-left: 5px solid #ff9800;
+    border-radius: 5px;
+}
+
+#action-buttons {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#action-buttons button {
+    margin: 0 10px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+/* Estilos de impresión (ocultar interfaz, dejar solo el menú) */
+@media print {
+    header, #input-section, #action-buttons, footer, .delete-item, .warning-message {
+        display: none !important;
+    }
+
+    main {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+
+    #menu-section {
+        box-shadow: none;
+        padding: 0;
+        border: none;
+    }
+    
+    .menu-table {
+        font-size: 10pt;
+    }
+    .menu-table th, .menu-table td {
+        border-color: #000;
+    }
+}
+/* ======================================================= */
+/* 3. ESTILOS DEL CATÁLOGO DESPLEGABLE (DOBLE NIVEL) */
+/* ======================================================= */
+
+/* Nivel 1: Categoría (Proteínas, Carbohidratos) */
+.catalogo-category-group {
+    border: 1px solid #c2c2c2;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.category-header {
+    /* Encabezado clicable de la CATEGORÍA (Nivel 1) */
+    font-family: 'Skyhigh', cursive;
+    margin: 0;
+    padding: 12px 15px;
+    cursor: pointer;
+    background-color: #f8bbd0; /* Fondo de Categoría */
+    color: #4a148c;
+    border-bottom: 1px solid #fce4ec;
+    transition: background-color 0.2s;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.category-header:hover {
+    background-color: #fce4ec;
+}
+
+.category-header::after {
+    /* Icono de flecha para la categoría */
+    content: '▼';
+    font-size: 0.8em;
+    transition: transform 0.3s;
+}
+
+.catalogo-category-group.active .category-header::after {
+    /* Icono de flecha girado cuando está activo */
+    transform: rotate(180deg);
+}
+
+.category-content {
+    /* Contenedor de las bases (Oculto por defecto en CSS) */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.catalogo-category-group.active .category-content {
+    /* Altura para mostrar el contenido */
+    max-height: 1000px;
+    padding: 5px 0;
+}
+
+
+/* Nivel 2: Base (Pollo, Huevo, etc.) */
+
+.catalogo-base-group {
+    border-top: 1px solid #eee;
+    margin: 0;
+}
+
+.base-header {
+    /* Encabezado clicable de la BASE (Nivel 2) */
+    font-family: 'Orion Sans', sans-serif;
+    margin: 0;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #fff8e1; /* Fondo de Base */
+    color: #6a1b9a;
+    transition: background-color 0.2s;
+    user-select: none;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.base-header:hover {
+    background-color: #fcf4c7;
+}
+
+.base-header::after {
+    /* Icono de flecha para la base */
+    content: '▶';
+    font-size: 0.8em;
+    transition: transform 0.3s;
+}
+
+.catalogo-base-group.active .base-header::after {
+    /* Icono de flecha girado cuando está activo */
+    transform: rotate(90deg);
+}
+
+.base-content {
+    /* Contenido de los checkboxes (Oculto por defecto en CSS) */
+    padding: 0 15px 5px 15px;
+    background-color: #ffffff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.catalogo-base-group.active .base-content {
+    /* Altura para mostrar el contenido */
+    max-height: 500px;
+    padding: 10px 15px;
+}
+
+/* Estado Deshabilitado */
+.catalogo-base-group.disabled-base .base-header {
+    background-color: #f2f2f2;
+    color: #999;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.catalogo-base-group.disabled-base .base-header:hover {
+    background-color: #f2f2f2;
+}
+
+/* Estilo del Checkbox al lado del ítem */
+
+.checkbox-item {
+    margin: 5px 0;
+    /* Usar flexbox para alinear checkbox y label */
+    display: flex; 
+    align-items: center;
+}
+
+.checkbox-item label {
+    /* Hace que todo el texto sea clicable y acomoda el checkbox */
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+}
+
+.checkbox-item input[type="checkbox"] {
+    /* Mueve el checkbox a la izquierda del texto */
+    margin-right: 10px;
+    /* Ajuste visual */
+    min-width: 16px;
+    min-height: 16px;
+    cursor: pointer;
+}

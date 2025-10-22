@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador de Dieta Semanal v1.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Planificador de Dieta Semanal v1.0</h1>
+    </header>
+
+    <main>
+        <section id="input-section">
+            <h2>1. Agregar Comidas</h2>
+            <form id="meal-form">
+                <label for="dia">Día de la Semana:</label>
+                <select id="dia" required>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miércoles">Miércoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                    <option value="Sábado">Sábado</option>
+                    <option value="Domingo">Domingo</option>
+                </select>
+
+                <label for="momento">Momento del Día:</label>
+                <select id="momento" required>
+                    <option value="Desayuno">Desayuno</option>
+                    <option value="Almuerzo">Almuerzo</option>
+                    <option value="Cena">Cena</option>
+                    <option value="Snack">Snack</option>
+                </select>
+                
+                <hr> 
+                
+                <label>Selecciona Múltiples Elementos:</label>
+                <div id="catalogo-container" class="catalogo-container catalogo-placeholder">
+                    Cargando catálogo...
+                </div>
+                
+                <label for="notas-adicionales">Notas (Cantidad, Aderezos, etc.):</label>
+                <input type="text" id="notas-adicionales" placeholder="Ej: sin aceite, con limón. La cantidad se asigna automáticamente.">
+
+                <button id="anadir-menu-btn" type="submit">Añadir al Menú 💖</button>
+            </form>
+        </section>
+
+        <section id="menu-section">
+            <h2>2. Tu Plan Semanal Completo</h2>
+            <p class="warning-message">
+                **Restricción Carb.**: Solo 1 porción de carbohidrato (Avena, Arroz, Tortilla, Papa, Legumbres) por tiempo de comida. 🛑<br>
+                **Ajuste Grasa**: Si agregas 2 o más ítems de grasa (Aguacate, Nueces, Aceite), **cada uno se ajustará a media porción** automáticamente.<br>
+                **Restricción Desayuno**: Carnes pesadas (Pollo, Res, Pescado) no están permitidas en el Desayuno. 🚫
+            </p>
+            <div id="menu-container">
+                </div>
+            
+            <div id="action-buttons">
+                <button id="clear-menu-btn">Limpiar Menú 🗑️</button>
+                <button id="download-btn">Imprimir / Guardar PDF 🖨️</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Planificador de Dieta v1.0. Creado por elyxgx.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
